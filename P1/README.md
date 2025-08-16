@@ -8,6 +8,60 @@
 
 ---
 
+## OLAP
+
+OLAP (Online Analytical Processing o Procesamiento Analítico en Línea) es una tecnología que permite realizar consultas complejas y análisis de grandes volúmenes de datos de forma rápida y eficiente. OLAP está diseñado para facilitar la exploración interactiva de datos desde diferentes perspectivas y niveles de detalle, lo que resulta especialmente útil para tareas de inteligencia empresarial (Business Intelligence).
+
+OLAP permite analizar información histórica almacenada en almacenes de datos (Data Warehouses) con el objetivo de apoyar la toma de decisiones estratégicas. A diferencia de los sistemas OLTP (Procesamiento de Transacciones en Línea), que se centran en operaciones de inserción, actualización y eliminación de datos, OLAP se centra en la lectura y el análisis de datos consolidados.
+
+## OLAP Multidimensional
+
+El enfoque más común de OLAP es el modelo multidimensional, donde los datos se organizan en estructuras llamadas cubos OLAP. Cada cubo contiene:
+
+- Medidas: valores numéricos que se quieren analizar.
+- Dimensiones: perspectivas desde las cuales se pueden analizar las medidas (por ejemplo, tiempo, ubicación, producto, cliente).
+
+## Tipos de OLAP
+
+Existen varias implementaciones de OLAP:
+
+- MOLAP (Multidimensional OLAP)
+    - Usa bases de datos multidimensionales.
+    - Ofrece un rendimiento muy alto para consultas complejas.
+
+- ROLAP (Relational OLAP)
+    - Usa bases de datos relacionales tradicionales.
+    - Maneja grandes volúmenes de datos, pero puede ser más lento.
+
+- HOLAP (Hybrid OLAP)
+    - ombina características de MOLAP y ROLAP.
+    - Intenta balancear el rendimiento y la escalabilidad.
+
+## Operaciones Típicas en OLAP
+
+OLAP permite realizar diversas operaciones analíticas sobre los cubos de datos. Las más comunes son:
+
+- **Roll-up (consolidar):** agrupar datos a un nivel superior de jerarquía.
+
+- **Drill-down (detallar):** desglosar datos a un nivel inferior de jerarquía.
+
+- **Slice (corte):** seleccionar una porción específica del cubo con base en un valor de una dimensión.
+
+- **Dice (segmentación):** seleccionar un subconjunto del cubo especificando varios valores de múltiples dimensiones.
+
+- **Pivot (rotar):** cambiar la orientación del cubo para ver los datos desde otra perspectiva.
+
+## Diagrama del Modelo Estrella
+
+![Diagrama](/Practica_1/imgs/modelo.png)
+
+## Modelo Implementado
+
+El modelo implementado es el modelo estrella y este fue elegido por:
+- Su simplicidad y facilidad de consulta.
+- La clara separación entre hechos (mediciones) y dimensiones (contexto de análisis).
+- Mejora el rendimiento para consultas OLAP y reportes.
+
 ## Descripción del Proyecto
 
 Este proyecto implementa un proceso ETL completo para la empresa SG-FOOD, una distribuidora de productos alimenticios con múltiples sucursales. El sistema extrae datos de ventas y compras de archivos CSV heterogéneos, los transforma y homologa, y los carga en un modelo de inteligencia empresarial tipo estrella para análisis multidimensional.
