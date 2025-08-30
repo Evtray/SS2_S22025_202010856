@@ -1,0 +1,82 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\SGFOODVentas.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|solutionrelative:SSAS_Practica_2\\SGFOODVentas.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimSucursal 1.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|solutionrelative:SSAS_Practica_2\\DimSucursal 1.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|solutionrelative:SSAS_Practica_2\\DimTiempoC.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC 1.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{A5037FDE-E084-16CF-9EE7-64D3CE913370}|SSAS_Practica_2\\SSAS_Practica_2.dwproj|solutionrelative:SSAS_Practica_2\\DimTiempoC 1.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SGFOODVentas.cube [Design]",
+              "DocumentMoniker": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\SGFOODVentas.cube",
+              "RelativeDocumentMoniker": "SSAS_Practica_2\\SGFOODVentas.cube",
+              "ToolTip": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\SGFOODVentas.cube [Design]",
+              "RelativeToolTip": "SSAS_Practica_2\\SGFOODVentas.cube [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-29T05:55:34.86Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DimSucursal 1.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimSucursal 1.dim",
+              "RelativeDocumentMoniker": "SSAS_Practica_2\\DimSucursal 1.dim",
+              "ToolTip": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimSucursal 1.dim [Design]",
+              "RelativeToolTip": "SSAS_Practica_2\\DimSucursal 1.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-24T00:05:32.093Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DimTiempoC.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC.dim",
+              "RelativeDocumentMoniker": "SSAS_Practica_2\\DimTiempoC.dim",
+              "ToolTip": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC.dim [Design]",
+              "RelativeToolTip": "SSAS_Practica_2\\DimTiempoC.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-24T00:02:11.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DimTiempoC 1.dim [Design]",
+              "DocumentMoniker": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC 1.dim",
+              "RelativeDocumentMoniker": "SSAS_Practica_2\\DimTiempoC 1.dim",
+              "ToolTip": "C:\\Users\\luist\\Documents\\Visual Studio\\SSAS_Practica_2\\SSAS_Practica_2\\DimTiempoC 1.dim [Design]",
+              "RelativeToolTip": "SSAS_Practica_2\\DimTiempoC 1.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-24T00:02:10.275Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

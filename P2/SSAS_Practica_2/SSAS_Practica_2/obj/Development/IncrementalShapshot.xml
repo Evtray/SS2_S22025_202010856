@@ -1,0 +1,131 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>SSAS_Practica_2</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>r1sQs8jzL/pwfkW/1k9mMjxV2NI=23/08/2025 17:06:1223/08/2025 17:06:12</TimeStamp>
+        <ID>
+          <String>SGFOOD</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>3dMCXZiYDDr/Hq0G0jbj1L0DNpc=23/08/2025 17:07:1923/08/2025 17:06:53</TimeStamp>
+        <ID>
+          <String>SGFOODCompras</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>L7rOn/s0UaP9p8MdT8Zufp0fWfs=23/08/2025 17:49:0223/08/2025 17:49:02</TimeStamp>
+        <ID>
+          <String>SGFOODVentas</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>aSzHIDj44MDZWjIptvsyiltsamU=23/08/2025 18:03:4723/08/2025 17:08:56</TimeStamp>
+        <ID>
+          <String>DimTiempoC</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>4p9uY1WawH910HR8/WnN7i/LAHE=23/08/2025 17:15:2523/08/2025 17:08:57</TimeStamp>
+        <ID>
+          <String>DimProveedor</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>0ZYlSSLrHjDblDaHdIAWw8shqNw=23/08/2025 17:16:2623/08/2025 17:08:57</TimeStamp>
+        <ID>
+          <String>DimProductoC</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>aSLazZoA8YYSXykVBohNE4eW4UM=23/08/2025 17:18:5423/08/2025 17:08:57</TimeStamp>
+        <ID>
+          <String>DimSucursal</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ustS+AVuEaO9oz7yx9nBMh1beOA=23/08/2025 18:01:3723/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>DimTiempoC 1</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>bALxWC9SjBNiGEffDu8NIohv+C4=23/08/2025 17:51:3423/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>DimCliente</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>IelCNnocIi06Kl8YyeQ5xPeL5p8=23/08/2025 17:53:3223/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>DimProductoC 1</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>W0zzvoPN9TmZDkdKBkOqwglglVE=23/08/2025 18:06:4323/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>DimSucursal 1</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>+69qVi734dkttihkxVIHT1nBrBM=23/08/2025 17:52:4123/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>DimVendedor</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>wYtmSumRQxtbQTyJfyniBBffu0M=23/08/2025 18:03:4723/08/2025 17:08:56Sl3/8QJzfdK6xtRoDFIZeNyIhWg=23/08/2025 17:08:5723/08/2025 17:08:56</TimeStamp>
+        <ID>
+          <String>SGFOODCompras</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>tkTjcIz3yk6yPIe1Ck1vces1Q/s=28/08/2025 23:57:5123/08/2025 17:51:01yUqnunIXG1kx9s58ET74AHFOTi8=23/08/2025 17:51:0123/08/2025 17:51:01</TimeStamp>
+        <ID>
+          <String>SGFOODVentas</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>+bhHa02LfcvWCZkOrHR++5LwQis=23/08/2025 17:05:0623/08/2025 17:05:05</TimeStamp>
+      <ID>
+        <String>SSAS_Practica_2</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2025-08-29T05:57:57.783333Z</LastDeployed>
+</DeploymentSnapshot>
