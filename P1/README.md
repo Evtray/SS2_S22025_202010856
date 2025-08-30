@@ -53,7 +53,7 @@ OLAP permite realizar diversas operaciones analíticas sobre los cubos de datos.
 
 ## Diagrama del Modelo Estrella
 
-![Diagrama](/Practica_1/imgs/modelo.png)
+![Diagrama](diagrama.png)
 
 ## Modelo Implementado
 
@@ -296,93 +296,128 @@ Fact_Compras ──┬── Dim_Productos (ProductoID)
 ## Resultados de consultas y pruebas del modelo en SQL
 
 ### **📊 Consulta 1: Total de compras y ventas por año**
+
+**Total de COMPRAS por año:**
 ```sql
 SELECT 
-    dt.Año,
-    ISNULL(SUM(fv.Total_Venta), 0) as Total_Ventas_Año,
-    ISNULL(SUM(fc.Total_Compra), 0) as Total_Compras_Año,
-    COUNT(fv.VentaID) as Transacciones_Venta,
-    COUNT(fc.CompraID) as Transacciones_Compra
-FROM Dim_Tiempo dt
-LEFT JOIN Fact_Ventas fv ON dt.TiempoID = fv.TiempoID
-LEFT JOIN Fact_Compras fc ON dt.TiempoID = fc.TiempoID
-GROUP BY dt.Año
-ORDER BY dt.Año;
+    f.Año,
+    SUM(hc.TotalCosto) AS TotalCompras
+FROM Hechos_Compras hc
+JOIN dim_tiempo f ON hc.FechaID = f.FechaID
+GROUP BY f.Año
+ORDER BY f.Año;
+```
+
+**Total de VENTAS por año:**
+```sql
+SELECT 
+    f.Año,
+    SUM(hv.TotalVenta) AS TotalVentas
+FROM Hechos_Ventas hv
+JOIN dim_tiempo f ON hv.FechaID = f.FechaID
+GROUP BY f.Año
+ORDER BY f.Año;
 ```
 **Resultado esperado:** Distribución de transacciones por año con totales monetarios, permitiendo verificar la carga correcta de datos temporales.
 
-### **📊 Consulta 2: Productos con pérdida (precio de venta menor al costo de compra)**
+**Resultados obtenidos:**
+
+![Consulta 1 - Parte 1](consulta1-1.png)
+
+![Consulta 1 - Parte 2](consulta1-2.png)
+
+### **📊 Consulta 2: Productos con pérdida**
 ```sql
+WITH UltimoCostoAntesDeVenta AS (
+    SELECT 
+        v.CodProducto,
+        v.CodSucursal,
+        v.FechaID,
+        v.PrecioUnitario AS PrecioVenta,
+        (
+            SELECT TOP 1 c.CostoUnitario
+            FROM Hechos_Compras c
+            WHERE c.CodProducto = v.CodProducto
+              AND c.CodSucursal = v.CodSucursal
+              AND c.FechaID <= v.FechaID
+            ORDER BY c.FechaID DESC
+        ) AS CostoUnitario
+    FROM Hechos_Ventas v
+)
 SELECT 
-    dp.CodProducto,
-    dp.NombreProducto,
-    dp.Categoria,
-    AVG(fv.PrecioUnitario) as Precio_Promedio_Venta,
-    AVG(fc.CostoUnitario) as Costo_Promedio_Compra,
-    (AVG(fv.PrecioUnitario) - AVG(fc.CostoUnitario)) as Margen_Promedio,
-    SUM(fv.Unidades) as Total_Unidades_Vendidas,
-    SUM(fc.Unidades) as Total_Unidades_Compradas
-FROM Dim_Productos dp
-INNER JOIN Fact_Ventas fv ON dp.ProductoID = fv.ProductoID
-INNER JOIN Fact_Compras fc ON dp.ProductoID = fc.ProductoID
-GROUP BY dp.ProductoID, dp.CodProducto, dp.NombreProducto, dp.Categoria
-HAVING AVG(fv.PrecioUnitario) < AVG(fc.CostoUnitario)
-ORDER BY Margen_Promedio ASC;
+    ucv.CodProducto,
+    p.NombreProducto,
+    ucv.CodSucursal,
+    s.NombreSucursal,
+    ucv.FechaID AS FechaVenta,
+    ucv.PrecioVenta,
+    ucv.CostoUnitario,
+    (ucv.PrecioVenta - ucv.CostoUnitario) AS MargenUnitario
+FROM UltimoCostoAntesDeVenta ucv
+JOIN dim_producto p ON ucv.CodProducto = p.CodProducto
+JOIN dim_sucursal s ON ucv.CodSucursal = s.CodSucursal
+WHERE ucv.CostoUnitario IS NOT NULL
+  AND ucv.PrecioVenta < ucv.CostoUnitario
+ORDER BY MargenUnitario;
 ```
 **Resultado esperado:** Productos que generan pérdidas económicas, crítico para decisiones de pricing de SG-FOOD.
+
+**Resultados obtenidos:**
+
+![Consulta 2](consulta2.png)
 
 ### **📊 Consulta 3: Top 5 productos más vendidos por unidades**
 ```sql
 SELECT TOP 5
-    dp.CodProducto,
-    dp.NombreProducto,
-    dp.MarcaProducto,
-    dp.Categoria,
-    SUM(fv.Unidades) as Total_Unidades_Vendidas,
-    SUM(fv.Total_Venta) as Ingresos_Totales,
-    AVG(fv.PrecioUnitario) as Precio_Promedio,
-    COUNT(DISTINCT fv.ClienteID) as Clientes_Distintos
-FROM Fact_Ventas fv
-INNER JOIN Dim_Productos dp ON fv.ProductoID = dp.ProductoID
-GROUP BY dp.ProductoID, dp.CodProducto, dp.NombreProducto, dp.MarcaProducto, dp.Categoria
-ORDER BY Total_Unidades_Vendidas DESC;
+    p.CodProducto,
+    p.NombreProducto,
+    SUM(hv.UnidadesVendidas) AS TotalUnidadesVendidas
+FROM Hechos_Ventas hv
+JOIN dim_producto p ON hv.CodProducto = p.CodProducto
+GROUP BY p.CodProducto, p.NombreProducto
+ORDER BY TotalUnidadesVendidas DESC;
 ```
 **Resultado esperado:** Productos estrella por volumen, útil para análisis de inventario y estrategias comerciales.
+
+**Resultados obtenidos:**
+
+![Consulta 3](consulta3.png)
 
 ### **📊 Consulta 4: Ingresos por región y año**
 ```sql
 SELECT 
-    ds.Region,
-    dt.Año,
-    SUM(fv.Total_Venta) as Ingresos_Region,
-    SUM(fv.Unidades) as Unidades_Vendidas,
-    COUNT(DISTINCT fv.ClienteID) as Clientes_Unicos,
-    COUNT(fv.VentaID) as Transacciones_Totales,
-    AVG(fv.Total_Venta) as Ticket_Promedio
-FROM Fact_Ventas fv
-INNER JOIN Dim_Sucursales ds ON fv.SucursalID = ds.SucursalID
-INNER JOIN Dim_Tiempo dt ON fv.TiempoID = dt.TiempoID
-GROUP BY ds.Region, dt.Año
-ORDER BY dt.Año, Ingresos_Region DESC;
+    s.Region,
+    f.Año,
+    SUM(hv.TotalVenta) AS Ingresos
+FROM Hechos_Ventas hv
+JOIN dim_sucursal s ON hv.CodSucursal = s.CodSucursal
+JOIN dim_tiempo f ON hv.FechaID = f.FechaID
+GROUP BY s.Region, f.Año
+ORDER BY s.Region, f.Año;
 ```
 **Resultado esperado:** Análisis geográfico de rendimiento por región y evolución temporal.
 
+**Resultados obtenidos:**
+
+![Consulta 4](consulta4.png)
+
 ### **📊 Consulta 5: Proveedores con mayor volumen de compras**
 ```sql
-SELECT TOP 10
-    dpr.CodProveedor,
-    dpr.NombreProveedor,
-    SUM(fc.Unidades) as Total_Unidades_Compradas,
-    SUM(fc.Total_Compra) as Inversion_Total,
-    COUNT(DISTINCT fc.ProductoID) as Productos_Diferentes,
-    AVG(fc.CostoUnitario) as Costo_Promedio_Unitario,
-    COUNT(fc.CompraID) as Numero_Transacciones
-FROM Fact_Compras fc
-INNER JOIN Dim_Proveedores dpr ON fc.ProveedorID = dpr.ProveedorID
-GROUP BY dpr.ProveedorID, dpr.CodProveedor, dpr.NombreProveedor
-ORDER BY Inversion_Total DESC;
+SELECT 
+    pr.CodProveedor,
+    pr.NombreProveedor,
+    SUM(hc.UnidadesCompradas) AS TotalUnidades,
+    SUM(hc.TotalCosto) AS TotalCompras
+FROM Hechos_Compras hc
+JOIN dim_proveedor pr ON hc.CodProveedor = pr.CodProveedor
+GROUP BY pr.CodProveedor, pr.NombreProveedor
+ORDER BY TotalUnidades DESC;
 ```
 **Resultado esperado:** Proveedores estratégicos ordenados por volumen de negocio, fundamental para negociaciones comerciales.
+
+**Resultados obtenidos:**
+
+![Consulta 5](consulta5.png)
 
 ### **📈 Consultas adicionales de validación:**
 
